@@ -9,7 +9,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/models/index.dart';
-import 'netCache.dart';
+import 'cacheObject.dart';
 import 'git.dart';
 import 'dart:convert';
 
