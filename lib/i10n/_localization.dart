@@ -22,6 +22,18 @@ class GmLocalizations {
   String get title {
     return isZh ? "Github应用" : "Github Demo";
   }
+
+  String get home {
+    return isZh ? "首页" : "Home";
+  }
+
+  String get login {
+    return isZh ? "登录" : "Login";
+  }
+
+  String get noDescription {
+    return isZh ? "暂无描述" : "NO Description";
+  }
 }
 
 //Locale代理类
