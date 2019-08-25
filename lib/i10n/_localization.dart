@@ -34,6 +34,31 @@ class GmLocalizations {
   String get noDescription {
     return isZh ? "暂无描述" : "NO Description";
   }
+
+  String get userName {
+    return isZh ? "用户名" : "User Name";
+  }
+
+  String get userNameOrEmail {
+    return isZh ? "请输入用户名或邮箱" : "username or email";
+  }
+
+  String get userNameRequired {
+    return isZh ? "用户名不能为空" : "please input username";
+  }
+
+  String get password {
+    return isZh ? "密码" : "password";
+  }
+
+  String get passwordRequired {
+    return isZh ? "密码不能为空" : "please input password";
+  }
+
+  String get userNameOrPasswordWrong {
+    return isZh ? "用户名或密码错误" : "username or password error";
+  }
+
 }
 
 //Locale代理类

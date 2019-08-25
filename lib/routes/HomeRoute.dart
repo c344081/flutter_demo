@@ -14,7 +14,7 @@ import '../widgets/MyDrawer.dart';
 import '../models/index.dart';
 import '../common/git.dart';
 import 'package:flukit/flukit.dart';
-import '../models/repoItem.dart';
+import '../widgets/repoItem.dart';
 
 class HomeRoute extends StatelessWidget {
   @override

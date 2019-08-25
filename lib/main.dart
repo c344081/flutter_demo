@@ -8,6 +8,7 @@ import 'routes/LanguageRoute.dart';
 import 'routes/LoginRoute.dart';
 import 'routes/ThemeChangeRoute.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_progress_hud/flutter_progress_hud.dart';
 
 void main() => Global.init().then((e) => runApp(MyApp()));
 
@@ -64,7 +65,7 @@ class MyApp extends StatelessWidget {
             },
             // 注册命名路由表
             routes: <String, WidgetBuilder>{
-              "login": (context) => LoginRoute(),
+              "login": (context) => ProgressHUD(child: LoginRoute()) ,
               "themes": (context) => ThemeChangeRoute(),
               "language": (context) => LanguageRoute(),
             },

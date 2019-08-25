@@ -6,7 +6,7 @@
 // Copyright © 2019 c344081. All rights reserved.
 //
 
-import 'index.dart';
+import '../models/index.dart';
 import 'package:flutter/material.dart';
 import '../common/gmAvatar.dart';
 import '../i10n/_localization.dart';
@@ -129,7 +129,7 @@ class _RepoItemState extends State<RepoItem> {
                       .toString()
                       .padRight(paddingWidth)),
 
-//              Icon(MyIcons.fork), //我们的自定义图标
+              Icon(Icons.font_download), //我们的自定义图标
               Text(widget.repo.forks_count.toString().padRight(paddingWidth)),
             ];
 
