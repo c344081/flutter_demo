@@ -7,6 +7,7 @@
 //
 
 import 'package:flutter/material.dart';
+import '../i10n/_localization.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({
@@ -15,6 +16,10 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void showPageNamed(String routeName) {
+      Navigator.of(context).pop();
+      Navigator.of(context).pushNamed(routeName);
+    }
     return Drawer(
       child: MediaQuery.removePadding(
         context: context,
@@ -31,13 +36,13 @@ class MyDrawer extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: ClipOval(
                       child: Image.asset(
-                        "imgs/avatar.png",
+                        "imgs/default-avatar.png",
                         width: 80,
                       ),
                     ),
                   ),
                   Text(
-                    "Wendux",
+                    "c344081",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )
                 ],
@@ -47,12 +52,18 @@ class MyDrawer extends StatelessWidget {
               child: ListView(
                 children: <Widget>[
                   ListTile(
-                    leading: const Icon(Icons.add),
-                    title: const Text('Add account'),
+                    leading: const Icon(Icons.settings),
+                    title: Text(GmLocalizations.of(context).language),
+                    onTap: () {
+                      showPageNamed("language");
+                    },
                   ),
                   ListTile(
                     leading: const Icon(Icons.settings),
-                    title: const Text('Manage accounts'),
+                    title: Text(GmLocalizations.of(context).theme),
+                    onTap: () {
+                      showPageNamed("themes");
+                    },
                   ),
                 ],
               ),

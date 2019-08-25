@@ -32,7 +32,8 @@ class _LoginRouteState extends State<LoginRoute> {
   void initState() {
     // 自动填充上次登录的用户名，填充后将焦点定位到密码输入框
     _unameController.text = Global.profile.lastLogin;
-    if (_unameController.text != null) {
+    print("_unameController.text == ${""}: ${_unameController.text == ""}");
+    if (_unameController.text != null && _unameController.text.length > 0) {
       _nameAutoFocus = false;
     }
     super.initState();
@@ -108,39 +109,42 @@ class _LoginRouteState extends State<LoginRoute> {
     if ((_formKey.currentState as FormState).validate()) {
       User user;
       final hud = ProgressHUD.of(context);
+      String errorMsg;
       hud.show();
       try {
         user = await Git(context).login(_unameController.text, _pwdController.text);
         // 因为登录页返回后，首页会build，所以我们传false，更新user后不触发更新
         Provider.of<UserModel>(context, listen: false).user = user;
       } catch (e) {
-        hud.dismiss();
         //登录失败则提示
         if (e.response?.statusCode == 401) {
-          hud.showWithText(GmLocalizations.of(context).userNameOrPasswordWrong);
-          Future.delayed(Duration(seconds: 1), () {
-            hud.dismiss();
-          });
+          errorMsg = GmLocalizations.of(context).userNameOrPasswordWrong;
         } else {
-          hud.showWithText(e.toString());
-          Future.delayed(Duration(seconds: 1), () {
-            hud.dismiss();
-          });
+          errorMsg = e.toString();
         }
-      } finally {
-        // 隐藏loading框
-        hud.dismiss();
-        Navigator.of(context).pop();
       }
       hud.dismiss();
-      if (user != null) {
-        // 返回
-        hud.showWithText("登录成功");
+
+      void showMsg (String msg) {
+        hud.showWithText(msg);
         Future.delayed(Duration(seconds: 1), () {
           hud.dismiss();
         });
-        Navigator.of(context).pop();
       }
+      if (errorMsg != null) {
+        showMsg(errorMsg);
+        return;
+      }
+      if (user == null) {
+        showMsg("登录失败");
+        return;
+      }
+
+      hud.showWithText("登录成功");
+      Future.delayed(Duration(seconds: 1), () {
+        hud.dismiss();
+        Navigator.of(context).pop();
+      });
     }
   }
 }

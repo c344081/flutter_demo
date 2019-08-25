@@ -59,6 +59,17 @@ class GmLocalizations {
     return isZh ? "用户名或密码错误" : "username or password error";
   }
 
+  String get language {
+    return isZh ? "语言" : "Language";
+  }
+
+  String get auto {
+    return isZh ? "跟随系统" : "Auto";
+  }
+
+  String get theme {
+    return isZh ? "主题" : "Theme";
+  }
 }
 
 //Locale代理类
